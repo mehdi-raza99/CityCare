@@ -153,6 +153,9 @@ export default function ComplaintHistory() {
   );
 }
 
+
+
+
 /* 🔹 Reusable Components */
 
 function TabBtn({ label, active, onClick }) {
@@ -176,59 +179,6 @@ function EmptyState({ message }) {
     </div>
   );
 }
-
-// function ComplaintCard({ data, activeTab }) {
-//   return (
-//     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition border">
-      
-//       {/* Image */}
-//       <div className="h-48 bg-gray-200">
-//         {data.media?.length > 0 ? (
-//           <img
-//             src={data.media[0].url}
-//             alt="complaint"
-//             className="w-full h-full object-cover"
-//           />
-//         ) : (
-//           <div className="flex items-center justify-center h-full text-gray-400">
-//             No Image
-//           </div>
-//         )}
-//       </div>
-
-//       {/* Content */}
-//       <div className="p-4 space-y-2 text-sm">
-//         <p><b>Category:</b> {data.category}</p>
-//         <p><b>Description:</b> {data.description}</p>
-
-//         <p>
-//           <b>Status:</b>{" "}
-//           <span className={`px-2 py-1 rounded text-xs ${getStatusColor(data.CurrentStatus)}`}>
-//             {data.CurrentStatus}
-//           </span>
-//         </p>
-
-//         <p><b>Votes:</b> {data.votes}</p>
-
-//         <p>
-//           <b>Created:</b>{" "}
-//           {new Date(data.createdAt).toLocaleDateString()}
-//         </p>
-//         {/* feedback button only for resolved complaints only in my tab on click the text box type some things opens the user write feedback nd submit it also help me declareing it states */}
-//         {activeTab === "my" && data.CurrentStatus === "Resolved" && (
-//             <button className="mt-2 px-3 py-1 bg-green-500 text-white rounded">
-//                 Give Feedback
-//             </button>
-
-           
-
-//         )}
-
-//       </div>
-//     </div>
-//   );
-// }
-
 
 
 

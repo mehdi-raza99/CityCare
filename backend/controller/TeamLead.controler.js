@@ -5,6 +5,7 @@ import zoneModel from "../model/zone.model.js";
 import complaintHistoryModel from "../model/complaint-history.model.js";
 import { uploadMedia } from "../utils/mediaUpload.js";  
 import Request  from "../model/requests.model.js";
+import { sendResetEmail } from "../utils/resetPassEmail.js";
 
 let getTeamsForTeamLead = async (req, res,next) => {
    try {
@@ -172,10 +173,10 @@ let updateComplaintStatus = async (req, res, next) => {
     const files = req.files; // Access uploaded files
     
     if (status === "Resolved") {
-      resolvedMediaUrls = await uploadMedia(files);
+      resolvedMediaUrls = await uploadMedia(files);   
     }
-  
-    let complaint = await complaintModel.findById(id);
+    // also populate name for complainant
+    let complaint = await complaintModel.findById(id).populate("complainant", "fullName");
 
     if (!complaint) {
       return res.status(404).json({ success: false, message: "Complaint not found." });
@@ -183,11 +184,15 @@ let updateComplaintStatus = async (req, res, next) => {
     console.log(complaint)
     let oldStatus = complaint.CurrentStatus;
     console.log("old status: ", oldStatus, " new status: ", status);
-    // res.end("ok");
-    // return; // Remove this after testing
-    // addinf a new filed in complaint of resolvedMedia and its value is resolvedMedia
+    
     if (status === "Resolved") {
       complaint.resolvedMedia = resolvedMediaUrls;
+      let mailOptions = {
+        to: "citycareforyou@gmail.com",// for testing
+        subject: "Your complaint has been resolved",
+        text: `Hello ${complaint?.complainant?.fullName},\n\nYour complaint with ID ${complaint._id} of category: ${complaint.category} with description: ${complaint.description} , has been marked as Resolved. If you have any further issues, please feel free to contact us.\n\nBest regards,\nCityCare Team`
+      };
+      await sendResetEmail(mailOptions);
       }
     complaint.CurrentStatus = status;
 

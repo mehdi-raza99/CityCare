@@ -692,9 +692,7 @@ let updateUser = async (req, res) => {
 let toggleEmployeeStatus = async (req, res, next) => {
   try {
     let { id } = req.params;
-
-  let employee = await employeeModel.findById(id);
-
+  let employee = await employeeModel.findOne({ userID: id });
 
   employee.isActive = !employee.isActive;
   await employee.save();

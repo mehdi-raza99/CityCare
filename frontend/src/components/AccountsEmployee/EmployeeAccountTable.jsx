@@ -12,16 +12,18 @@ const EmployeeAccountTable = ({ employees, refresh }) => {
 
   const updateStatus = async (id) => {
     try {
-      await axios.put(
+     
+      let response = await axios.put(
         `${API_URL}${API_ADMIN_ROUTE}/users/toggleActiveStatus/${id}`,
         {},
         { withCredentials: true }
       );
-
+      
       toast.success("Employee status updated");
       refresh();
 
     } catch (error) {
+      
       toast.error("Failed to update status");
     }
   };
