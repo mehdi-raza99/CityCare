@@ -47,9 +47,11 @@ let getComplaintsForTeamLead = async (req, res, next) => {
       status, 
       team, 
       dateFilter, 
-      category,   // 🔥 NEW
+      category,   
       page = 1, 
-      limit = 10 
+      limit = 10 ,
+      _id
+      
     } = req.query;
    
     // ✅ Get teams under team lead
@@ -113,6 +115,9 @@ let getComplaintsForTeamLead = async (req, res, next) => {
     if (category) {
       //  forget zone thing we seaech by category in complaint model
       query.category = { $regex: category, $options: "i" };
+    }
+    if(_id){
+      query._id = _id;
     }
     // ✅ PAGINATION
     let skip = (page - 1) * limit;

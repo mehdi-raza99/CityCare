@@ -14,7 +14,9 @@ export default function ContactUs() {
 
   const navigate = useNavigate();
   const { handleSubmit,register,formState: { errors } } = useForm();
-
+  let onDonateUS=()=>{
+    navigate("/payment");
+  }
   let onSubmit = async (data) => {
     console.log(data);
     setLoading(true);
@@ -70,12 +72,14 @@ export default function ContactUs() {
           <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">Help Us Improve Our Communities! </p>
           <p className="text-[15px] text-slate-600 mt-4 leading-relaxed">A small donation can make a big difference in improving local communities. <br /> Help us continue our work. <br /> Donate today and be the part of change. </p>
           
-          <Link to={"payment"}>
           <button
-            className="text-white bg-green-600 hover:bg-green-700 rounded-md text-sm font-medium px-4 py-4 cursor-pointer border-0  mt-5">Donate Now</button>
-          </Link>
-
+            className="text-white bg-green-600 hover:bg-green-700 rounded-md text-sm font-medium px-4 py-4 cursor-pointer border-0  mt-5"
+            onClick={onDonateUS}
+          >
+            Donate Now
+          </button>
          
+
         </div>
 
        

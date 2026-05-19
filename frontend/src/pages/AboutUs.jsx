@@ -20,7 +20,7 @@ export default function AboutUs() {
         <img
           src="https://pagedone.io/asset/uploads/1717741215.png"
           alt="city workers"
-          className="rounded-2xl shadow-lg w-full h-75 object-cover"
+          className="rounded-2xl shadow-lg w-[60%] h-90 object-cover"
         />
         <div>
           <h2 className="text-3xl font-semibold mb-4">Who We Are</h2>

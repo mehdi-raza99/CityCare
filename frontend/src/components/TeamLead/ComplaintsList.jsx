@@ -16,6 +16,7 @@ const ComplaintsList = () => {
   dateFilter: "",
   team: "",
   category: "",
+  _id: "",
 };
   const [filters, setFilters] = useState(defaultFilters);
   
@@ -23,6 +24,7 @@ const ComplaintsList = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const debouncedCategory = useDebounce(filters.category, 500);
+  const debounced_id = useDebounce(filters._id, 500);
 
   const handleResetFilters = () => {
   setFilters(defaultFilters);
@@ -41,6 +43,7 @@ const ComplaintsList = () => {
             team: filters.team,
             dateFilter: filters.dateFilter,
             category: debouncedCategory || "", // ✅ synced now
+            _id: debounced_id || "",
             page,
             limit: 3,
           },
@@ -72,7 +75,7 @@ const fetchTeams = async () => {
 };
   useEffect(() => {
   fetchComplaints();
-}, [filters.status, filters.team, filters.dateFilter, debouncedCategory, page]);
+}, [filters.status, filters.team, filters.dateFilter, debouncedCategory, page, debounced_id]); 
  useEffect(() => {
     fetchTeams();
   }, []);

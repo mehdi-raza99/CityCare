@@ -7,6 +7,7 @@ const CMTable = ({  complaints, onViewHistory, onAssignTeam, onUpdateStatus  }) 
 
         <thead className="bg-gray-100 text-sm">
           <tr>
+            <th className="p-3 text-left">id</th>
             <th className="p-3 text-left">Category</th>
             <th className="p-3 text-left">Zone</th>
             <th className="p-3 text-left">Status</th>
@@ -19,6 +20,7 @@ const CMTable = ({  complaints, onViewHistory, onAssignTeam, onUpdateStatus  }) 
           {complaints.map(c => (
             <tr key={c._id} className="border-t">
 
+              <td className="p-3">{c._id}</td>
               <td className="p-3">{c.category}</td>
               <td className="p-3">{c.zone?.name}</td>
 

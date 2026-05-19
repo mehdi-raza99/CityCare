@@ -67,17 +67,17 @@ const AssignTeamModal = ({ complaintId, onClose, refresh }) => {
     try {
       setLoading(true);
 
-      await axios.put(
+      let response = await axios.post(
         `${API_URL}${ROUTE}/complaints/${complaintId}/assign`,
         { teamId: selectedTeam },
         { withCredentials: true }
       );
 
-      toast.success("Team assigned!");
-      refresh();
+      toast.success("Team assigned successfully");
       onClose();
+      refresh();
 
-    } catch (err) {
+    } catch (error) {
       toast.error("Assignment failed");
     } finally {
       setLoading(false);

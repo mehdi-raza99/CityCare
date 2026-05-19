@@ -236,7 +236,7 @@ let changeUserPassword = async (req, res,next) => {
         }
         let isPasswordValid = await bcrypt.compare(oldPassword, user.passwordHash);
         if (!isPasswordValid) {
-            let error = new Error("wronge old password");
+            let error = new Error("Wrong old password");
             error.status = 400;
             return next(error);
         }

@@ -25,7 +25,7 @@ export default function CitizensTestimonials() {
                     <img className="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100" alt="userImage2" />
                     <div>
                         <h1 className="text-lg font-medium text-gray-800">Kashif Subhan</h1>
-                        <p className="text-gray-800/80">Raja Bazar,Rawalpindi</p>
+                        <p className="text-gray-800/80">Korangi, Karachi</p>
                     </div>
                 </div>
                 <div className="p-5 pb-7">

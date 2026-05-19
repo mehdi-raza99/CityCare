@@ -22,8 +22,9 @@ const Complaints = () => {
     team: "",
     unassigned: false,
     outOfService: "",
-    date: "month",
-    status: ""
+    date: "", 
+    status: "",
+    _id: ""
   });
 
   const [debounced, setDebounced] = useState(filters);

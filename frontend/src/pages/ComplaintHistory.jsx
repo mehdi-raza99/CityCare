@@ -228,12 +228,12 @@ function ComplaintCard({ data, activeTab }) {
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
       
       {/* Image */}
-      <div className="h-48 bg-gray-200">
+      <div className="h-[full] w-[90%] bg-gray-200 mx-auto rounded-2xl border">
         {data.media?.length > 0 ? (
           <img
             src={data.media[0].url}
             alt="complaint"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-2xl border "
           />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-400">
@@ -244,6 +244,7 @@ function ComplaintCard({ data, activeTab }) {
 
       {/* Content */}
       <div className="p-4 space-y-2 text-sm">
+        <p><b>id:</b> {data._id}</p>
         <p><b>Category:</b> {data.category}</p>
         <p><b>Description:</b> {data.description}</p>
 

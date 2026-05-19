@@ -37,7 +37,7 @@ export default function Footer() {
             })
             .catch((error) => {
                 
-                tost.error("Failed to subscribe to newsletter");
+                tost.error(error.response?.data?.message || "Failed to subscribe to newsletter");
             });
         
     }

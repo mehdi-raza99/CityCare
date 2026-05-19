@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true
       });
-
+      
       if (response.data.success) {
         setData(response.data.data);
       } else {

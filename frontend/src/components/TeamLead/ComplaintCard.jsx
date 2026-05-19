@@ -42,11 +42,11 @@ const ComplaintCard = ({ complaint , btndisabled}) => {
       <div className="flex flex-col grow p-3 space-y-1">
 
         {/* TITLE + STATUS */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-2">
           <h2 className="font-semibold text-sm truncate">
-            {complaint.category}
+            {`id: ${complaint._id}`}
           </h2>
-
+           
           <span
             className={`px-2 py-0.5 text-[10px] rounded-full ${getStatusStyle(
               complaint.CurrentStatus

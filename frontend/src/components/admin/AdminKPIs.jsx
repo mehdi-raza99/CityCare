@@ -30,6 +30,12 @@ const AdminKPIs = ({ overview }) => {
         <h3 className="text-gray-400 text-sm font-medium mb-2">Pending</h3>
         <div className="text-3xl font-bold text-white mb-2">{overview.pendingComplaints}</div>
       </div>
+
+      {/* Active Teams */}
+      <div className="bg-[#1e1e1e] border border-gray-800 rounded-lg p-5">
+        <h3 className="text-gray-400 text-sm font-medium mb-2">Active Teams</h3>
+        <div className="text-3xl font-bold text-white mb-2">{overview.activeTeams}</div>
+      </div>
     </div>
   );
 };

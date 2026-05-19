@@ -37,6 +37,14 @@ const CMFilters = ({ filters, setFilters}) => {
         }
         className="border p-2 rounded"
       />
+      <input
+        placeholder="Search _id"
+        value={filters._id}
+        onChange={(e) =>
+          setFilters(p => ({ ...p, _id: e.target.value }))
+        }
+        className="border p-2 rounded"
+      />
 
       <input
         placeholder="Search Zone"
@@ -83,6 +91,7 @@ const CMFilters = ({ filters, setFilters}) => {
         <option value="yesterday">Yesterday</option>
         <option value="week">Week</option>
         <option value="month">Month</option>
+        <option value="">All time</option>
       </select>
       {/* Drop down for CurrentStatus : "Pending", "In-Progress", "Resolved", "Rejected", "Assigned", "Review"*/}
       <select

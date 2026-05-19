@@ -43,7 +43,7 @@ const ComplaintHistoryModal = ({ Complaint, onClose }) => {
             <p className="text-sm text-gray-500 mb-1">Before</p>
             <img
               src={beforeImg}
-              className="w-full h-60 object-cover rounded-lg border"
+              className="w-[80%] h-60 object-cover rounded-lg border"
             />
           </div>
 
@@ -51,7 +51,7 @@ const ComplaintHistoryModal = ({ Complaint, onClose }) => {
             <p className="text-sm text-gray-500 mb-1">After</p>
             <img
               src={afterImg}
-              className="w-full h-60 object-cover rounded-lg border"
+              className="w-[90%] h-60 object-cover rounded-lg border"
             />
           </div>
 
