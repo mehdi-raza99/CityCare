@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../feature/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../utilities/Loader";
@@ -11,7 +11,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, isAuthenticated,user } = useSelector((state) => state.user);
+  const { loading, error, isAuthenticated, user } = useSelector((state) => state.user);
 
   const {
     register,
@@ -23,19 +23,19 @@ const Login = () => {
     dispatch(loginUser(data))
       .unwrap()
       .then((res) => {
-        
-        if(res?.data?.roleUser === "teamLead"){
+
+        if (res?.data?.roleUser === "teamLead") {
           navigate("/teamLead/dashboard");
-        }else if(res?.data?.roleUser === "admin"){
+        } else if (res?.data?.roleUser === "admin") {
           navigate("/admin/dashboard");
         }
-        else if(res?.data?.roleUser === "cityManager"){
+        else if (res?.data?.roleUser === "cityManager") {
           navigate("/cityManager/dashboard");
         }
-        else{
+        else {
           navigate("/");
         }
-       toast.success(res?.message || "Login successful");
+        toast.success(res?.message || "Login successful");
       })
       .catch((error) => {
         toast.error(error?.message || "Login failed");
@@ -70,9 +70,9 @@ const Login = () => {
               placeholder="john@example.com"
               {...register("email", { required: "Email is required" })}
             />
-              {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email.message}</p>
-              )}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
 
             <label
               className="text-sm font-medium text-gray-700"
@@ -88,9 +88,9 @@ const Login = () => {
               className="w-full p-2 bg-gray-200"
               {...register("passwordHash", { required: "Password is required" })}
             />
-              {errors.passwordHash && (
-                <p className="text-red-500 text-sm">{errors.passwordHash.message}</p>
-              )}
+            {errors.passwordHash && (
+              <p className="text-red-500 text-sm">{errors.passwordHash.message}</p>
+            )}
 
             <button className="text-red-500 text-left cursor-pointer">
               <Link to="/forget-password">Forgot Password?</Link>
@@ -116,7 +116,7 @@ const Login = () => {
       <div className="hidden w-1/2 h-full md:flex items-center justify-center">
         <div className="w-[80%] h-[80%]">
           <img
-            src="/src/assets/login-image.png"
+            src="/assets/login-image.png"
             alt="Login"
             className="w-full h-full object-cover rounded-2xl"
           />

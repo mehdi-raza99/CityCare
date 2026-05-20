@@ -12,8 +12,8 @@ export default function Footer() {
         e.preventDefault();
         // get email value
         let email = e.target.elements[0].value;
-       
-        
+
+
         if (!email) {
             tost.error("Please enter your email address");
             return;
@@ -25,29 +25,29 @@ export default function Footer() {
             tost.error("Please enter a valid email address");
             return;
         }
-       let newsletter= true;
+        let newsletter = true;
         // Send subscription request to backend
         let link = `${apiUrl}${userRoute}/contact-us`;
-        
+
         axios.post(link, { email, newsletter }, { withCredentials: true })
             .then((response) => {
-               
-                tost.success( "Subscribed to newsletter successfully");
+
+                tost.success("Subscribed to newsletter successfully");
                 e.target.reset(); // Clear the input field after successful subscription
             })
             .catch((error) => {
-                
+
                 tost.error(error.response?.data?.message || "Failed to subscribe to newsletter");
             });
-        
+
     }
 
 
-  return (
-     <div className='text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32'>
+    return (
+        <div className='text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32'>
             <div className='flex flex-wrap justify-between gap-12 md:gap-6'>
                 <div className='max-w-80'>
-                    <img src="/src/assets/logo.png" alt="logo" className='mb-2 h-20 md:h-24' />
+                    <img src="/assets/logo.png" alt="logo" className='mb-2 h-20 md:h-24' />
                     <p className='text-sm'>
                         To empower citizens by giving them a voice and ensuring their complaints are addressed efficiently using technology.
                     </p>
@@ -77,7 +77,7 @@ export default function Footer() {
                         <li><Link to={"about-us"}>About</Link></li>
                         <li><Link to={"login"}>Log in</Link></li>
                         <li><Link to={"signup"}>Sign up</Link></li>
-                        
+
                     </ul>
                 </div>
 
@@ -97,10 +97,10 @@ export default function Footer() {
                     <div className='flex items-center mt-4'>
                         <form onSubmit={handleNewsletterSubscription}>
                             <input type="text" className='bg-white rounded-l border border-gray-300 h-9 px-3 outline-none' placeholder='Your email' />
-                            <button className='flex items-center justify-center bg-black h-9 w-9 aspect-square rounded-r cursor-pointer' 
-                            type='submit'
+                            <button className='flex items-center justify-center bg-black h-9 w-9 aspect-square rounded-r cursor-pointer'
+                                type='submit'
                             >
-                                
+
                                 {/* Arrow icon */}
                                 <svg className="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" /></svg>
                             </button>
@@ -111,8 +111,8 @@ export default function Footer() {
             <hr className='border-gray-300 mt-8' />
             <div className='flex flex-col md:flex-row gap-2 items-center justify-between py-5'>
                 <p>© {new Date().getFullYear()} All rights reserved.</p>
-                
+
             </div>
         </div>
-  )
+    )
 }

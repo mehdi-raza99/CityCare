@@ -12,24 +12,24 @@ const Forget = () => {
     console.log("Forget password data: ", data);
     // Handle password reset logic here (e.g., send reset email)
 
-   try {
-    let link = `${apiUrl}${userRoute}/forgot-password`;
-     axios.post(link, data)
-      .then((response) => {
-        console.log("Forget password response: ", response.data);
-        toast.success(response.data.message || "Password reset email sent successfully!");
-      })
-      .catch((error) => {
-        console.error("Error in forget password: ", error.response?.data || error.message || "An error occurred while sending the password reset email.");
-        toast.error(error.response?.data?.message || error.message || "Failed to send password reset email. Please try again.");
-      });
+    try {
+      let link = `${apiUrl}${userRoute}/forgot-password`;
+      axios.post(link, data)
+        .then((response) => {
+          console.log("Forget password response: ", response.data);
+          toast.success(response.data.message || "Password reset email sent successfully!");
+        })
+        .catch((error) => {
+          console.error("Error in forget password: ", error.response?.data || error.message || "An error occurred while sending the password reset email.");
+          toast.error(error.response?.data?.message || error.message || "Failed to send password reset email. Please try again.");
+        });
 
-   } catch (error) {
-    console.log("-- ");
-    
-   }
-      
-      
+    } catch (error) {
+      console.log("-- ");
+
+    }
+
+
 
   };
 
@@ -48,9 +48,9 @@ const Forget = () => {
           Don't worry, happens to all of us. Enter your email address below to
           recover your password
         </p>
-        <form 
+        <form
           onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col justify-center gap-2 md:w-[60%]">
+          className="flex flex-col justify-center gap-2 md:w-[60%]">
           <input
             className="p-1 w-full px-4 py-3 bg-gray-200 border border-gray-200 rounded-lg
                          focus:ring-2 focus:ring-blue-200 focus:border-blue-400
@@ -75,7 +75,7 @@ const Forget = () => {
       {/* Right-side */}
       <div className="hidden lg:block w-1/2">
         <img
-          src="./src/assets/forget-password.png"
+          src="./assets/forget-password.png"
           alt="Forget Password Illustration"
         />
       </div>

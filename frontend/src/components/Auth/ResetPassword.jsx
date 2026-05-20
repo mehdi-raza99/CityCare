@@ -4,7 +4,7 @@ import axios from "axios";
 let apiUrl = import.meta.env.VITE_API_URL;
 let userRoute = import.meta.env.VITE_API_USER_ROUTE;
 import toast from "react-hot-toast";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ const ResetPassword = () => {
       setError("Passwords do not match");
       return;
     }
-    if(password.length < 5){
+    if (password.length < 5) {
       setError("Password must be at least 5 characters long");
       return;
     }
@@ -32,27 +32,27 @@ const ResetPassword = () => {
     try {
       // send password as newPassword
       // token from url
-      
+
       console.log("Reset password token: ", token);
       let link = `${apiUrl}${userRoute}/reset-password/${token}`;
       axios
         .post(link, { newPassword: password })
         .then((response) => {
-          
+
           toast.success(response.data.message || "Password reset successfully!");
           navigate("/login");
         })
         .catch((error) => {
-          
+
           toast.error(error.response?.data?.message || error.message || "Failed to reset password. Please try again.");
         });
-      
+
 
     } catch (error) {
       console.error("Error in reset password: ", error.response?.data || error.message || "An error occurred while resetting the password.");
-        
+
     }
-    
+
 
   };
 
@@ -109,7 +109,7 @@ const ResetPassword = () => {
       {/* Right-side */}
       <div className="hidden lg:block">
         <img
-          src="/src/assets/forget-password.png"
+          src="/assets/forget-password.png"
           alt="Forget Password Illustration"
         />
       </div>
