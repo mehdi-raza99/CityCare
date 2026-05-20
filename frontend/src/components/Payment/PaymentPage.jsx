@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const PaymentPage = () => {
   const [amount, setAmount] = useState(10);
   const [loading, setLoading] = useState(false);
@@ -10,7 +12,7 @@ const PaymentPage = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/payment/create-checkout-session',
+        `${API_URL}/api/payment/create-checkout-session`,
         {
           amount,
           userId: null, // Replace with auth user ID
@@ -21,8 +23,8 @@ const PaymentPage = () => {
     } catch (error) {
       console.error('Payment error:', error);
       alert('Payment failed: ' + error.message);
-      
-    }finally {
+
+    } finally {
       setLoading(false);
     }
   };
@@ -49,10 +51,9 @@ const PaymentPage = () => {
                 key={amt}
                 onClick={() => setAmount(amt)}
                 className={`py-2 rounded-lg text-sm font-medium border transition
-                  ${
-                    amount === amt
-                      ? 'bg-indigo-600 text-white border-indigo-600'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-indigo-400 hover:text-indigo-600'
+                  ${amount === amt
+                    ? 'bg-indigo-600 text-white border-indigo-600'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-indigo-400 hover:text-indigo-600'
                   }`}
               >
                 ${amt}
@@ -75,10 +76,9 @@ const PaymentPage = () => {
           onClick={handlePayment}
           disabled={loading}
           className={`w-full py-3 rounded-xl font-semibold text-white transition
-            ${
-              loading
-                ? 'bg-indigo-400 cursor-not-allowed'
-                : 'bg-indigo-600 hover:bg-indigo-700'
+            ${loading
+              ? 'bg-indigo-400 cursor-not-allowed'
+              : 'bg-indigo-600 hover:bg-indigo-700'
             }`}
         >
           {loading ? 'Processing…' : `Donate $${amount}`}
