@@ -16,7 +16,7 @@ import Contactus from "./pages/Contactus.jsx";
 import Layout from "./components/Layout/Layout.jsx";
 import ScrollToTop from "./components/Scroll/ScrollToTop.jsx";
 import { Toaster, toast } from "react-hot-toast";
-import OTPInput from "./components/utilities/OTPinput.jsx";
+import OTPInput from "./components/utilities/OTPInput.jsx";
 import { useEffect } from "react";
 const apiUrl = import.meta.env.VITE_API_URL;
 const userRoute = import.meta.env.VITE_API_USER_ROUTE;
