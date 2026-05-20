@@ -4,7 +4,7 @@ import axios from "axios";
 let API_URL = import.meta.env.VITE_API_URL;
 let ROUTE = import.meta.env.VITE_API_CITY_MANAGER_ROUTE;
 
-import fallbackImg from "../../assets/NOimg.jpg";
+import fallbackImg from "/assets/NOimg.jpg";
 
 const ComplaintHistoryModal = ({ Complaint, onClose }) => {
   const [history, setHistory] = useState([]);
