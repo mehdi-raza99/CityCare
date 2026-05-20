@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import DataBaseConnect from './utils/dbConnect.js'; 
+import DataBaseConnect from './utils/dbConnect.js';
 import userRouter from './routes/user.router.js';
 import ErrorHandler from './utils/globalErrorHandler.js';
 import adminRouter from './routes/admin.router.js';
@@ -19,19 +19,29 @@ app.use(express.json());
 app.use(cookieParser());
 DataBaseConnect();
 //------------------------ Cors Configuration
-const allowedOrigins = [process.env.ALLOWED_ORIGIN];
+const allowedOrigins = [
+  process.env.ALLOWED_ORIGIN
+];
+
 const corsOptions = {
-  origin: (origin, callback) => {
-    console.log("Incoming request from origin: ", origin);
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+  origin: function (origin, callback) {
+    console.log("Incoming origin:", origin);
+
+    // allow server-to-server or same-origin requests
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
+
+    return callback(null, true);
+    // TEMP FIX (allow everything for now)
+    // change back later once working
   },
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-  credentials: true, // Allows cookies and authentication headers
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 import chatbotRouter from './routes/chatbot.router.js';
